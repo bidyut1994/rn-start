@@ -2,13 +2,14 @@ import {StyleSheet, Text, View, Button} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-export default function DetailsScreen({navigation}) {
+export default function DetailsScreen() {
   return (
     <View style={Styles.container}>
+      <Text> Details Screen </Text>
       {/* <Text>DetailsScreen</Text>
-      <Text>{name}</Text>
+    
       <Text>{title}</Text> */}
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+      {/* <Button title="Go back" onPress={() => navigation.goBack()} />
       <Button
         title="setParams"
         onPress={() =>
@@ -23,7 +24,7 @@ export default function DetailsScreen({navigation}) {
             title: 'abc 111',
           })
         }
-      />
+      /> */}
     </View>
   );
 }
