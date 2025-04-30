@@ -9,9 +9,9 @@ export default function HomeScreen({navigation, route}) {
     <View style={Styles.container}>
       <View style={{alignItems: 'center', marginBottom: 20}}>
         <Icon name="accessibility" size={32} color="#000000" />
-        <Text>HomeScreen</Text>
+        <Text>Home Screen</Text>
       </View>
-      <View style={{marginTop: 20, width: '100%', gap: 10}}>
+      <View style={{marginTop: 20, width: '100%', gap: 10, padding: 20}}>
         {screenList.map((screen, index) => (
           <Pressable
             key={index}
@@ -44,6 +44,6 @@ const Styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    padding: 20,
+    paddingTop: 50,
   },
 });

@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, StatusBar, Image} from 'react-native';
 import {Marquee} from '@animatereactnative/marquee';
+import Header from '../component/Header';
 
-// Import images directly
 const images = [
   require('../assets/img/Frame2.png'),
   require('../assets/img/Frame3.png'),
@@ -28,22 +28,25 @@ function Item({image, index}) {
 
 const CarouselScreen = ({navigation}) => {
   return (
-    <View style={{flex: 1, marginTop: 100}}>
-      <Text style={{fontSize: 18, marginBottom: 20, textAlign: 'center'}}>
-        Carousel Screen using Marquee
-      </Text>
-      <Marquee style={{height: 200}} autoPlay={true} speed={1}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          {images.map((image, index) => (
-            <Item key={`image-${index}`} image={image} index={index} />
-          ))}
-        </View>
-      </Marquee>
+    <View style={{flex: 1}}>
+      <Header title="Carousel Screen using Marquee" />
+      <View style={{flex: 1, marginTop: 100}}>
+        <Text style={{fontSize: 18, marginBottom: 20, textAlign: 'center'}}>
+          Carousel Screen using Marquee
+        </Text>
+        <Marquee style={{height: 200}} autoPlay={true} speed={1}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            {images.map((image, index) => (
+              <Item key={`image-${index}`} image={image} index={index} />
+            ))}
+          </View>
+        </Marquee>
+      </View>
     </View>
   );
 };

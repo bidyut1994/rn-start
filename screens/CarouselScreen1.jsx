@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, {useState, useRef} from 'react';
 import {FlatList} from 'react-native';
-
+import Header from '../component/Header';
 const {width} = Dimensions.get('window');
 const ITEM_WIDTH = 200;
 
@@ -43,52 +43,55 @@ export default function CarouselScreen1() {
   };
 
   return (
-    <View style={{flex: 1, marginTop: 50}}>
-      <Text style={{fontSize: 20, fontWeight: 'bold', textAlign: 'center'}}>
-        Carousel Using FlatList
-      </Text>
-      <View style={{marginTop: 20, marginLeft: 15}}>
-        <FlatList
-          ref={flatListRef}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={images}
-          renderItem={({item}) => (
-            <View style={{padding: 10}}>
-              <Image
-                source={item}
-                style={{
-                  width: 200,
-                  height: 300,
-                  borderRadius: 10,
-                  padding: 10,
-                  boxShadow: '0px 5px 5px 0px rgba(244, 221, 221, 0.5)',
-                }}
-              />
-            </View>
-          )}
-          keyExtractor={(item, index) => index.toString()}
-          onScroll={handleScroll}
-          scrollEventThrottle={16}
-          snapToInterval={ITEM_WIDTH + 20} // Item width + padding
-          decelerationRate="fast"
-          snapToAlignment="start"
-        />
-      </View>
-
-      {/* Pagination Dots */}
-      <View style={styles.paginationContainer}>
-        {images.map((_, index) => (
-          <TouchableOpacity
-            key={index}
-            style={[
-              styles.paginationDot,
-              index === activeIndex ? styles.paginationDotActive : {},
-            ]}
-            onPress={() => scrollToIndex(index)}
+    <View style={{flex: 1}}>
+      <Header title="Carousel Using FlatList" />
+      <View style={{flex: 1, marginTop: 50}}>
+        <Text style={{fontSize: 20, fontWeight: 'bold', textAlign: 'center'}}>
+          Carousel Using FlatList
+        </Text>
+        <View style={{marginTop: 20, marginLeft: 15}}>
+          <FlatList
+            ref={flatListRef}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={images}
+            renderItem={({item}) => (
+              <View style={{padding: 10}}>
+                <Image
+                  source={item}
+                  style={{
+                    width: 200,
+                    height: 300,
+                    borderRadius: 10,
+                    padding: 10,
+                    boxShadow: '0px 5px 5px 0px rgba(244, 221, 221, 0.5)',
+                  }}
+                />
+              </View>
+            )}
+            keyExtractor={(item, index) => index.toString()}
+            onScroll={handleScroll}
+            scrollEventThrottle={16}
+            snapToInterval={ITEM_WIDTH + 20} // Item width + padding
+            decelerationRate="fast"
+            snapToAlignment="start"
           />
-        ))}
-      </View>
+        </View>
+
+        {/* Pagination Dots */}
+        <View style={styles.paginationContainer}>
+          {images.map((_, index) => (
+            <TouchableOpacity
+              key={index}
+              style={[
+                styles.paginationDot,
+                index === activeIndex ? styles.paginationDotActive : {},
+              ]}
+              onPress={() => scrollToIndex(index)}
+            />
+          ))}
+        </View>
+      </View>{' '}
     </View>
   );
 }

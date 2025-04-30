@@ -15,6 +15,8 @@ import CarouselScreen from './screens/CarouselScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import CarouselScreen1 from './screens/CarouselScreen1';
+import ScrollArticle from './screens/ScrollArticle';
+import Header from './component/Header';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -28,6 +30,11 @@ export const screenList = [
     name: 'CarouselScreen1',
     component: CarouselScreen1,
     title: 'Carousel using FlatList',
+  },
+  {
+    name: 'ScrollArticle',
+    component: ScrollArticle,
+    title: 'Scroll Article',
   },
 ];
 
@@ -73,7 +80,7 @@ function MainStack({navigation}: {navigation: any}) {
           key={index}
           name={screen.name}
           component={screen.component}
-          options={{title: screen.title}}
+          options={{title: screen.title, headerShown: false}}
         />
       ))}
     </Stack.Navigator>
