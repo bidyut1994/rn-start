@@ -13,9 +13,23 @@ import HomeScreen from './screens/HomeScreen';
 import DetailsScreen from './screens/DetailsScreen';
 import CarouselScreen from './screens/CarouselScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import CarouselScreen1 from './screens/CarouselScreen1';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
+
+export const screenList = [
+  {
+    name: 'CarouselScreen',
+    component: CarouselScreen,
+    title: 'Carousel using Marquee',
+  },
+  {
+    name: 'CarouselScreen1',
+    component: CarouselScreen1,
+    title: 'Carousel using FlatList',
+  },
+];
 
 function CustomDrawerContent(props: DrawerContentComponentProps) {
   return (
@@ -53,50 +67,59 @@ function MainStack({navigation}: {navigation: any}) {
         }}
       />
 
-      <Stack.Screen name="Details" component={DetailsScreen} />
-      <Stack.Screen name="Carousel1" component={CarouselScreen} />
+      {/* <Stack.Screen name="Details" component={DetailsScreen} /> */}
+      {screenList.map((screen, index) => (
+        <Stack.Screen
+          key={index}
+          name={screen.name}
+          component={screen.component}
+          options={{title: screen.title}}
+        />
+      ))}
     </Stack.Navigator>
   );
 }
 
 function App(): React.JSX.Element {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName="Home"
-        drawerContent={props => <CustomDrawerContent {...props} />}
-        screenOptions={() => ({
-          drawerActiveTintColor: '#e91e63',
-          drawerInactiveTintColor: '#34495e',
-          drawerStyle: {
-            borderRadius: 5,
-          },
-          drawerContentStyle: {
-            backgroundColor: '#c6cbef',
-          },
-        })}>
-        <Drawer.Screen
-          options={{headerShown: false}}
-          name="Home"
-          component={MainStack}
-        />
-        <Drawer.Screen
-          name="Details"
-          component={DetailsScreen}
-          options={({navigation}) => ({
-            headerLeft: () => (
-              <Icon
-                style={{marginHorizontal: 20}}
-                onPress={() => navigation.goBack()}
-                name="arrow-back"
-                size={24}
-                color="black"
-              />
-            ),
-          })}
-        />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <NavigationContainer>
+        <Drawer.Navigator
+          initialRouteName="Home"
+          drawerContent={props => <CustomDrawerContent {...props} />}
+          screenOptions={() => ({
+            drawerActiveTintColor: '#e91e63',
+            drawerInactiveTintColor: '#34495e',
+            drawerStyle: {
+              borderRadius: 5,
+            },
+            drawerContentStyle: {
+              backgroundColor: '#c6cbef',
+            },
+          })}>
+          <Drawer.Screen
+            options={{headerShown: false}}
+            name="Home"
+            component={MainStack}
+          />
+          <Drawer.Screen
+            name="Details"
+            component={DetailsScreen}
+            options={({navigation}) => ({
+              headerLeft: () => (
+                <Icon
+                  style={{marginHorizontal: 20}}
+                  onPress={() => navigation.goBack()}
+                  name="arrow-back"
+                  size={24}
+                  color="black"
+                />
+              ),
+            })}
+          />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
 
