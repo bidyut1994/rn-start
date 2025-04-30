@@ -26,13 +26,23 @@ export default function ScrollArticle() {
       <ArticleComponent
         imgSource={require('../assets/img/Frame4.png')}
         content={
-          <View style={{backgroundColor: 'white', flex: 1}}>
+          <View style={{backgroundColor: 'white', flex: 1, paddingBottom: 150}}>
+            <Text
+              style={{
+                paddingHorizontal: 20,
+                textAlign: 'justify',
+                fontSize: 28,
+                fontWeight: 'bold',
+                marginTop: 20,
+              }}>
+              Article Scroll Component
+            </Text>
             <Text
               style={{
                 paddingHorizontal: 20,
                 textAlign: 'justify',
                 fontSize: 16,
-                marginTop: 20,
+                marginTop: 10,
               }}>
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a piece of classical Latin literature from 45 BC,
