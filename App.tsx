@@ -20,6 +20,7 @@ import CircularSlider from './screens/CircularSlider';
 import OnboardingScreen from './screens/OnboardingScreen';
 import InfinityScrollScreen from './screens/InfinityScrollScreen';
 import InfinityScrollScreenPage2 from './screens/InfinityScrollScreenPage2';
+import BottomSheetScreen from './screens/BottomSheetScreen';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -66,6 +67,12 @@ export const screenList = [
     component: InfinityScrollScreenPage2,
     title: 'Infinity Scroll Page 2',
     list: false,
+  },
+  {
+    name: 'BottomSheetScreen',
+    component: BottomSheetScreen,
+    title: 'Bottom Sheet',
+    list: true,
   },
 ];
 
