@@ -215,13 +215,7 @@ export default function InfinityScrollScreenPage2({route, navigation}) {
               <Text style={styles.statLabel}>Species</Text>
             </View>
             <View style={styles.statDivider} />
-            <View style={styles.statItem}>
-              <Text style={styles.statValue}>
-                {character.type || 'Unknown'}
-              </Text>
-              <Text style={styles.statLabel}>Type</Text>
-            </View>
-            <View style={styles.statDivider} />
+
             <View style={styles.statItem}>
               <Text style={styles.statValue}>{character.gender}</Text>
               <Text style={styles.statLabel}>Gender</Text>
