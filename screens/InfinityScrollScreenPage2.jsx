@@ -282,7 +282,7 @@ export default function InfinityScrollScreenPage2({route, navigation}) {
             />
           )}
 
-          <View style={styles.infoSection}>
+          <View style={[styles.infoSection, {marginBottom: 250}]}>
             <Text style={styles.sectionHeader}>Additional Info</Text>
             <View style={styles.infoCard}>
               <View style={styles.infoRow}>
