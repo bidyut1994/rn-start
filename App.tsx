@@ -17,6 +17,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import CarouselScreen1 from './screens/CarouselScreen1';
 import ScrollArticle from './screens/ScrollArticle';
 import CircularSlider from './screens/CircularSlider';
+import OnboardingScreen from './screens/OnboardingScreen';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -40,6 +41,11 @@ export const screenList = [
     name: 'CircularSlider',
     component: CircularSlider,
     title: 'Circular Slider',
+  },
+  {
+    name: 'OnboardingScreen',
+    component: OnboardingScreen,
+    title: 'Onboarding Screen',
   },
 ];
 
