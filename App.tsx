@@ -18,6 +18,7 @@ import CarouselScreen1 from './screens/CarouselScreen1';
 import ScrollArticle from './screens/ScrollArticle';
 import CircularSlider from './screens/CircularSlider';
 import OnboardingScreen from './screens/OnboardingScreen';
+import InfinityScrollScreen from './screens/InfinityScrollScreen';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -46,6 +47,11 @@ export const screenList = [
     name: 'OnboardingScreen',
     component: OnboardingScreen,
     title: 'Onboarding Screen',
+  },
+  {
+    name: 'InfinityScrollScreen',
+    component: InfinityScrollScreen,
+    title: 'Infinity Scroll',
   },
 ];
 
