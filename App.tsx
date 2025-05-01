@@ -19,6 +19,8 @@ import ScrollArticle from './screens/ScrollArticle';
 import CircularSlider from './screens/CircularSlider';
 import OnboardingScreen from './screens/OnboardingScreen';
 import InfinityScrollScreen from './screens/InfinityScrollScreen';
+import InfinityScrollScreenPage2 from './screens/InfinityScrollScreenPage2';
+
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -27,31 +29,43 @@ export const screenList = [
     name: 'CarouselScreen',
     component: CarouselScreen,
     title: 'Carousel using Marquee',
+    list: true,
   },
   {
     name: 'CarouselScreen1',
     component: CarouselScreen1,
     title: 'Carousel using FlatList',
+    list: true,
   },
   {
     name: 'ScrollArticle',
     component: ScrollArticle,
     title: 'Scroll Article',
+    list: true,
   },
   {
     name: 'CircularSlider',
     component: CircularSlider,
     title: 'Circular Slider',
+    list: true,
   },
   {
     name: 'OnboardingScreen',
     component: OnboardingScreen,
     title: 'Onboarding Screen',
+    list: true,
   },
   {
     name: 'InfinityScrollScreen',
     component: InfinityScrollScreen,
     title: 'Infinity Scroll',
+    list: true,
+  },
+  {
+    name: 'InfinityScrollScreenPage2',
+    component: InfinityScrollScreenPage2,
+    title: 'Infinity Scroll Page 2',
+    list: false,
   },
 ];
 

@@ -6,15 +6,21 @@ import {
   Image,
   Dimensions,
   Switch,
+  TouchableOpacity,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import Header from '../component/Header';
+import {useNavigation} from '@react-navigation/native';
 
 const {width, height} = Dimensions.get('window');
 
 const CharacterListItems = ({item, gridView}) => {
+  const navigation = useNavigation();
   return (
-    <View
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('InfinityScrollScreenPage2', {character: item})
+      }
       style={{
         width: gridView ? '30%' : '95%',
         backgroundColor: 'white',
@@ -106,7 +112,7 @@ const CharacterListItems = ({item, gridView}) => {
           </Text>
         )} */}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -159,6 +165,7 @@ export default function InfinityScrollScreen() {
 
   useEffect(() => {
     initialFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
