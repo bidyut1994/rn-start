@@ -35,7 +35,7 @@ const CharacterListItems = ({item, gridView}) => {
         {gridView ? (
           <View
             style={{
-              height: 120,
+              height: 115,
               alignItems: 'center',
               justifyContent: 'center',
             }}>
