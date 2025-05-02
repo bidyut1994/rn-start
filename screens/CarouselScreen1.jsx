@@ -26,7 +26,6 @@ export default function CarouselScreen1() {
   const flatListRef = useRef(null);
 
   const handleScroll = event => {
-    // Calculate active index based on scroll position
     const scrollPosition = event.nativeEvent.contentOffset.x;
     const index = Math.round(scrollPosition / ITEM_WIDTH);
     if (index !== activeIndex) {
@@ -72,13 +71,12 @@ export default function CarouselScreen1() {
             keyExtractor={(item, index) => index.toString()}
             onScroll={handleScroll}
             scrollEventThrottle={16}
-            snapToInterval={ITEM_WIDTH + 20} // Item width + padding
+            snapToInterval={ITEM_WIDTH + 20}
             decelerationRate="fast"
             snapToAlignment="start"
           />
         </View>
 
-        {/* Pagination Dots */}
         <View style={styles.paginationContainer}>
           {images.map((_, index) => (
             <TouchableOpacity
@@ -91,7 +89,7 @@ export default function CarouselScreen1() {
             />
           ))}
         </View>
-      </View>{' '}
+      </View>
     </View>
   );
 }
