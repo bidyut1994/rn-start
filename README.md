@@ -1,97 +1,121 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Demo App
 
-# Getting Started
+A comprehensive React Native showcase application demonstrating various UI components, animations, and navigation patterns. This project serves as both a learning resource and a reference implementation for common mobile app features.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+![React Native Demo](https://reactnative.dev/img/header_logo.svg)
 
-## Step 1: Start Metro
+## Features
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+This demo app includes implementations of:
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- **UI Components**
+  - Custom Header with flexible styling
+  - Bottom Sheet for modal interfaces
+  - Carousel implementations (Animation and FlatList-based)
+  - Image galleries with pagination
+  - Circular sliders and progress indicators
+- **Navigation**
+  - Drawer navigation
+  - Stack navigation
+  - Tab navigation
+  - Deep linking
+- **Data Handling**
+  - Infinite scrolling with API integration
+  - Form validation and submission
+  - Local storage
+- **Animations**
+  - Gesture-based interactions
+  - Smooth transitions
+  - React Native Reanimated examples
+- **UX Patterns**
+  - Pull-to-refresh
+  - Swipe actions
+  - Onboarding flows
 
-```sh
-# Using npm
+## Tech Stack
+
+- React Native 0.79
+- React Navigation
+- React Native Gesture Handler
+- React Native Reanimated
+- React Native Vector Icons
+- React Native Linear Gradient
+- React Native Bottom Sheet
+
+## Installation
+
+```bash
+# Clone the repository
+git clone [repository-url]
+
+# Navigate to the project directory
+cd AwesomeProject294
+
+# Install dependencies
+npm install
+
+# For iOS, install CocoaPods dependencies
+cd ios && pod install && cd ..
+```
+
+## Running the Application
+
+### Start Metro
+
+First, start the Metro JavaScript bundler:
+
+```bash
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+### Run on Android
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+### Run on iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Project Structure
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```
+/AwesomeProject294
+  /android           # Android native code
+  /ios               # iOS native code
+  /assets            # Static assets
+    /img             # Images used in the app
+  /component         # Reusable React components
+    Header.jsx       # Custom header component
+    ...
+  /screens           # Screen components
+    HomeScreen.jsx             # Main menu screen
+    CarouselScreen.jsx         # Animation-based carousel
+    CarouselScreen1.jsx        # FlatList-based carousel
+    InfinityScrollScreen.jsx   # Infinite scrolling demo
+    BottomSheetScreen.jsx      # Bottom sheet demo
+    ...
+  App.tsx            # Main app component and navigation setup
+  index.js           # Entry point
+```
 
-## Step 3: Modify your app
+## Troubleshooting
 
-Now that you have successfully run the app, let's make changes!
+### Common Issues
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+1. **Module Resolution Errors**
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+   - Run `npm install` to ensure all dependencies are installed
+   - Clear Metro cache with `npm start -- --reset-cache`
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+2. **Build Errors**
 
-## Congratulations! :tada:
+   - For Android: Check that your Android SDK is properly set up
+   - For iOS: Ensure CocoaPods are installed with `cd ios && pod install`
 
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+3. **Gesture Handler Issues**
+   - Ensure `import 'react-native-gesture-handler';` is at the top of your entry file
+   - Wrap your app with `<GestureHandlerRootView>` as shown in App.tsx

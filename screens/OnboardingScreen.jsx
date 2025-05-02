@@ -43,7 +43,7 @@ function Slice({item}) {
           width: width,
           justifyContent: 'center',
           alignItems: 'center',
-          marginTop: 60,
+          marginTop: 0,
         }}>
         <Image
           source={item.image}
@@ -124,7 +124,7 @@ export default function OnboardingScreen() {
             flexDirection: 'row',
             justifyContent: 'space-between',
             paddingHorizontal: 20,
-            marginBottom: 30,
+            marginBottom: 70,
           }}>
           {currentIndex < slides.length - 1 ? (
             <>
