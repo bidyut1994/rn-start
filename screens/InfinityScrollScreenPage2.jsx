@@ -148,15 +148,41 @@ export default function InfinityScrollScreenPage2({route, navigation}) {
   const bottomSheetRef = useRef(null);
   const snapPoints = useMemo(() => ['50%', '80%'], []);
   const [selectedEpisode, setSelectedEpisode] = useState(null);
+  const [isBottomSheetReady, setIsBottomSheetReady] = useState(false);
+  const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
 
   // Bottom Sheet functions
-  const handleEpisodePress = useCallback(episodeId => {
-    setSelectedEpisode(episodeId);
-    bottomSheetRef.current?.snapToIndex(0);
-  }, []);
+  const handleEpisodePress = useCallback(
+    episodeId => {
+      setSelectedEpisode(episodeId);
+      // Only try to open if the sheet is ready
+      if (isBottomSheetReady) {
+        setIsBottomSheetVisible(true);
+        setTimeout(() => {
+          bottomSheetRef.current?.snapToIndex(0);
+        }, 100);
+      }
+    },
+    [isBottomSheetReady],
+  );
 
   const handleCloseBottomSheet = useCallback(() => {
+    setIsBottomSheetVisible(false);
     bottomSheetRef.current?.close();
+  }, []);
+
+  // Handle sheet changes
+  const handleSheetChanges = useCallback(index => {
+    if (index === -1) {
+      setIsBottomSheetVisible(false);
+    } else {
+      setIsBottomSheetVisible(true);
+    }
+  }, []);
+
+  // Mark bottom sheet as ready after component mounts
+  useEffect(() => {
+    setIsBottomSheetReady(true);
   }, []);
 
   if (!character) {
@@ -306,14 +332,22 @@ export default function InfinityScrollScreenPage2({route, navigation}) {
           ref={bottomSheetRef}
           index={-1}
           snapPoints={snapPoints}
+          onChange={handleSheetChanges}
           enablePanDownToClose={true}
           backgroundStyle={styles.bottomSheetBackground}
           handleIndicatorStyle={styles.bottomSheetIndicator}>
           <BottomSheetView style={styles.bottomSheetContent}>
-            <EpisodeDetailsCard
-              episodeId={selectedEpisode}
-              onClose={handleCloseBottomSheet}
-            />
+            {isBottomSheetVisible && selectedEpisode ? (
+              <EpisodeDetailsCard
+                episodeId={selectedEpisode}
+                onClose={handleCloseBottomSheet}
+              />
+            ) : (
+              <View style={styles.bottomSheetLoading}>
+                <ActivityIndicator size="large" color="#0000ff" />
+                <Text>Loading episode data...</Text>
+              </View>
+            )}
           </BottomSheetView>
         </BottomSheet>
       </SafeAreaView>
@@ -506,13 +540,13 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
   },
   bottomSheetIndicator: {
-    width: 40,
+    width: 50,
+    backgroundColor: '#2196F3',
     height: 5,
-    backgroundColor: '#7886C7',
   },
   bottomSheetContent: {
     flex: 1,
-    padding: 20,
+    padding: 24,
   },
   episodeDetailsContainer: {
     flex: 1,
@@ -575,6 +609,12 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   episodeDetailsError: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  bottomSheetLoading: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
