@@ -40,6 +40,7 @@ const Styles = StyleSheet.create({
   },
   titleContainer: {
     flex: 5,
+    alignItems: 'center',
   },
   rightContainer: {
     flex: 1,
@@ -47,5 +48,6 @@ const Styles = StyleSheet.create({
   headerText: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: '#000000',
   },
 });

@@ -1,4 +1,3 @@
-import './gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
