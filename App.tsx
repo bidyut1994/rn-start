@@ -29,7 +29,7 @@ export const screenList = [
   {
     name: 'CarouselScreen',
     component: CarouselScreen,
-    title: 'Carousel using Marquee',
+    title: 'Carousel using Animation',
     list: true,
   },
   {
@@ -91,10 +91,9 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
   );
 }
 
-// Nested navigator for screens that need back button
 function MainStack({navigation}: {navigation: any}) {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="HomeScreen">
       <Stack.Screen
         name="HomeScreen"
         component={HomeScreen}
@@ -112,7 +111,6 @@ function MainStack({navigation}: {navigation: any}) {
         }}
       />
 
-      {/* <Stack.Screen name="Details" component={DetailsScreen} /> */}
       {screenList.map((screen, index) => (
         <Stack.Screen
           key={index}

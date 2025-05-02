@@ -29,7 +29,7 @@ function Item({image, index}) {
 const CarouselScreen = ({navigation}) => {
   return (
     <View style={{flex: 1}}>
-      <Header title="Carousel Screen using Marquee" />
+      <Header title="Carousel Screen Animation" />
       <View style={{flex: 1, marginTop: 100}}>
         <Text style={{fontSize: 18, marginBottom: 20, textAlign: 'center'}}>
           Carousel Screen using Marquee
