@@ -160,7 +160,7 @@ function ArticleComponent({imgSource, content}) {
       top: 0,
       left: 0,
       right: 0,
-      height: Math.max(300, 400 - scrollOfset.value),
+      height: Math.max(250, 350 - scrollOfset.value),
       transform: [
         {
           translateY: interpolate(scrollOfset.value, [0, 300], [0, -100], {
@@ -173,7 +173,7 @@ function ArticleComponent({imgSource, content}) {
 
   const contentAnimatedStyle = useAnimatedStyle(() => {
     return {
-      marginTop: Math.max(250, 400 - scrollOfset.value),
+      marginTop: Math.max(150, 350 - scrollOfset.value),
     };
   });
 

@@ -25,10 +25,10 @@ export default function Header({title}) {
 
 const Styles = StyleSheet.create({
   headerContainer: {
-    paddingTop: 35,
+    paddingTop: 40,
     flexDirection: 'row',
     paddingHorizontal: 18,
-    paddingBottom: 18,
+    paddingBottom: 12,
     backgroundColor: '#FFFFFF',
     borderBottomWidth: 1,
     borderBottomColor: '#E0E0E0',
@@ -40,14 +40,13 @@ const Styles = StyleSheet.create({
   },
   titleContainer: {
     flex: 5,
-    alignItems: 'center',
   },
   rightContainer: {
     flex: 1,
   },
   headerText: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: 'semibold',
     color: '#000000',
   },
 });

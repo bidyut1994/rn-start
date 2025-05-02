@@ -7,8 +7,9 @@ import {
   Dimensions,
   Switch,
   TouchableOpacity,
+  RefreshControl,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import Header from '../component/Header';
 import {useNavigation} from '@react-navigation/native';
 
@@ -35,7 +36,7 @@ const CharacterListItems = ({item, gridView}) => {
         {gridView ? (
           <View
             style={{
-              height: 115,
+              height: 105,
               alignItems: 'center',
               justifyContent: 'center',
             }}>
@@ -123,7 +124,7 @@ export default function InfinityScrollScreen() {
   const [nextPage, setNextPage] = useState(
     'https://rickandmortyapi.com/api/character',
   );
-
+  const [refreshing, setRefreshing] = useState(false);
   const fetchDataNextPage = async () => {
     if (loading) {
       return;
@@ -166,6 +167,17 @@ export default function InfinityScrollScreen() {
   useEffect(() => {
     initialFetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      await initialFetch();
+    } catch (error) {
+      console.error('Error refreshing data:', error);
+    } finally {
+      setRefreshing(false);
+    }
   }, []);
 
   return (
@@ -224,6 +236,17 @@ export default function InfinityScrollScreen() {
             }
             onEndReached={fetchDataNextPage}
             onEndReachedThreshold={0.5}
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+                colors={['#ffffff']}
+                tintColor="#ffffff"
+                progressBackgroundColor="#8E7DBE"
+                title="Pull to refresh..."
+                titleColor="#ffffff"
+              />
+            }
             ListFooterComponent={() => (
               <View>
                 {loading && (
